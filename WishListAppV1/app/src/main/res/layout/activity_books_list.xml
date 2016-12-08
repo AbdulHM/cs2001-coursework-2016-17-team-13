@@ -10,11 +10,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.abdul.wishlistappv1.BooksList">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="I read the Hannah Montana fan fiction I write in my spare time"
-        />
+        android:layout_width="wrap_content"
+        android:layout_alignParentTop="true">
+    </android.support.v4.view.ViewPager>
 
 </RelativeLayout>

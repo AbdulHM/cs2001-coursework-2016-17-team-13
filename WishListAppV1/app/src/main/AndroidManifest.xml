@@ -19,7 +19,8 @@
         <activity android:name=".MusicList" />
         <activity android:name=".TVList" />
         <activity android:name=".BooksList" />
-        <activity android:name=".MoviesList"></activity>
+        <activity android:name=".MoviesList" />
+        <activity android:name=".CustomSwip"></activity>
     </application>
 
 </manifest>

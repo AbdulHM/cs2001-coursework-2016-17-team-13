@@ -48,5 +48,7 @@ public class Menu extends AppCompatActivity {
                 startActivity(openMovies);
             }
         });
+
+
     }
 }
