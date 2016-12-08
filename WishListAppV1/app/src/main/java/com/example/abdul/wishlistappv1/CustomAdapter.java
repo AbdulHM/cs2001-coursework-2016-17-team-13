@@ -11,6 +11,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.abdul.wishlistappv1.data.DataStore;
+import com.example.abdul.wishlistappv1.data.DummyArrayBasedDataStore;
+import com.example.abdul.wishlistappv1.data.Music;
+
+import java.util.List;
+
 /**
  * Created by ali_c on 05/12/2016.
  */
@@ -18,12 +24,12 @@ import android.widget.TextView;
 public class CustomAdapter extends PagerAdapter {
 
     Context context;
-    int[] imageId = {R.drawable.picture1, R.drawable.picture2, R.drawable.picture3, R.drawable.picture4, R.drawable.picture5, R.drawable.picture6, R.drawable.picture7,R.drawable.picture8,R.drawable.picture9 };
-    String[] ArtistDescription = {"Come see Britney Spears live ! with WhatILike tickets. Go to www.whatIlike.co.uk","Come see Drake live ! with WhatILike tickets. Go to www.whatIlike.co.uk ","Come see Hannah Montana live ! with WhatILike tickets. Go to www.whatIlike.co.uk ", "Come see JCole Live! With WhatILike tickets Go to www.whatilike.com","Come see John Legend Live! With WhatILike tickets  Go to www.whatilike.com",
-            "Come see Justin Beiber  Live! Go to www.whatilike.com", "Come see Kanye West Live! Go to www.whatilike.com" ,"Come see Lana Del Rey live ! With WhatILike tickets" ,"Come see Maroon 5 Live! Go to www.whatilike.com"};
+    DataStore dataStore;
+
+
     public CustomAdapter(Context context){
         this.context = context;
-
+        dataStore = DummyArrayBasedDataStore.getInstance();
     }
 
 
@@ -31,13 +37,17 @@ public class CustomAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         // TODO Auto-generated method stub
 
+        List<Music> musicList = dataStore.getMusicRecommendations();
+
+        Music music = musicList.get(position);
+
         LayoutInflater inflater = ((Activity)context).getLayoutInflater();
 
         View viewItem = inflater.inflate(R.layout.image_item, container, false);
         ImageView imageView = (ImageView) viewItem.findViewById(R.id.imageView);
-        imageView.setImageResource(imageId[position]);
+        imageView.setImageResource(music.getImage());
         TextView textView1 = (TextView) viewItem.findViewById(R.id.textView1);
-        textView1.setText(ArtistDescription[position]);
+        textView1.setText(music.getArtistDescription());
         ((ViewPager)container).addView(viewItem);
 
         return viewItem;
@@ -46,7 +56,7 @@ public class CustomAdapter extends PagerAdapter {
     @Override
     public int getCount() {
         // TODO Auto-generated method stub
-        return imageId.length;
+        return dataStore.getMusicRecommendations().size();
     }
 
     @Override
