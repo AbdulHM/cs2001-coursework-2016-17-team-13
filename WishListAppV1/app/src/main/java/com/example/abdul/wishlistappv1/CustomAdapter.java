@@ -18,7 +18,7 @@ import com.example.abdul.wishlistappv1.data.Music;
 import java.util.List;
 
 /**
- * Created by ali_c on 05/12/2016.
+ * Created by  Ali on 05/12/2016.
  */
 
 public class CustomAdapter extends PagerAdapter {

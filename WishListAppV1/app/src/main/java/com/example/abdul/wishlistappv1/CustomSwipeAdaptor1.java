@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 /**
- * Created by william on 29/11/16.
+ * Created by Bilal on 29/11/16.
  */
 
 public class CustomSwipeAdaptor1 extends PagerAdapter {

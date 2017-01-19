@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 /**
- * Created by william on 02/12/16.
+ * Created by William on 02/12/16.
  */
 
 public class CustomSwipeAdaptor extends PagerAdapter {
