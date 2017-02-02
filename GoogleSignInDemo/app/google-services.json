@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "352797219935",
+    "project_id": "aerial-handbook-157020"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:352797219935:android:3a9cdb8ec4a0ce43",
+        "android_client_info": {
+          "package_name": "com.example.android.googlesignindemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "352797219935-peibte4kibhjdh0pjcvdjvits372lm36.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.googlesignindemo",
+            "certificate_hash": "1A863343F649A7B8D4FAF5D91D1FBF45BB8084CC"
+          }
+        },
+        {
+          "client_id": "352797219935-c2ffl0l0a9fikh2uvhnrf5flickb25od.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCULwMQDNvzamu_f6QxPWbh2sNGCwtQNVY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
