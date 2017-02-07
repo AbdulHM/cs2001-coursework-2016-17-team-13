@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ActionBarSearchView</string>
+    <string-array name= "array_movies">
+
+        <item>Zootopia</item>
+        <item>Captain America: Civil War</item>
+        <item>Finding Dory</item>
+        <item>Star Trek Beyond</item>
+        <item>Interstellar</item>
+        <item>Inception</item>
+        <item>In Time</item>
+        <item>10 Cloverfield Lane</item>
+        <item>Independance Day: Resurgence</item>
+        <item>Sausage Party</item>
+
+    </string-array>
+</resources>
