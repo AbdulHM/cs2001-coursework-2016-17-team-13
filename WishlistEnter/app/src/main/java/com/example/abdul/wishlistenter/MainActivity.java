@@ -3,6 +3,7 @@ package com.example.abdul.wishlistenter;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.facebook.AccessToken;
@@ -21,6 +22,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -32,10 +34,11 @@ public class MainActivity extends AppCompatActivity {
     LoginButton loginButton;
     TextView textView;
     CallbackManager callbackManager;
-
+    private ArrayList<String> namelist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
@@ -46,54 +49,55 @@ public class MainActivity extends AppCompatActivity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-               // textView.setText("Login Succesful \n" + loginResult.getAccessToken().getUserId() + "\n" + loginResult.getAccessToken().getToken());
+                startActivity(new Intent(MainActivity.this, MainMenu.class));
 
-                new GraphRequest(
-                        AccessToken.getCurrentAccessToken(),
-                        "/" + loginResult.getAccessToken().getUserId() + "/movies",
-                        null,
-                        HttpMethod.GET,
-                        new GraphRequest.Callback() {
-                            public void onCompleted(GraphResponse response) {
-                                // textView.setText("__________________RESPONSE"+response);
-                                //for(int i=0; i<response.length; i++) {
-                                final JSONObject jsonObject = response.getJSONObject();
-
-
-                                try {
-                                    //JSONObject movies = jsonObject.getJSONObject("movies");
-                                    JSONArray data = jsonObject.getJSONArray("data");
-                                     StringBuilder names = new StringBuilder();;
-
-                                    for(int i=0; i<data.length(); i++) {
-                                        JSONObject objectdata = data.getJSONObject(i);
-                                        String name = objectdata.getString("name");
-                                       names.append(name);
-                                    }
-                                    textView.setText("__________________RESPONSE" + names.toString());
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-
-
-
-
-//                                    JSONObject jUsers =  jsonObject.getJSONObject("movies");
-//                                    JSONObject jData =  jUsers.getJSONObject("data");
-//                                    char[][] data;
+//                new GraphRequest(
+//                        AccessToken.getCurrentAccessToken(),
+////                        "/" + loginResult.getAccessToken().getUserId() + "/movies",
+//                        "/" + AccessToken.getCurrentAccessToken().getUserId() + "/movies",
+//                        null,
+//                        HttpMethod.GET,
+//                        new GraphRequest.Callback() {
+//                            public void onCompleted(GraphResponse response) {
+//                                final JSONObject jsonObject = response.getJSONObject();
+//                                namelist = new ArrayList<String>();
 //
-//                                    for(int i=0; i<jData.length(); i++) {
-//                                        JSONObject c = jData.getJSONObject(String.valueOf(i));
-//                                        String name = c.getString("name");
-//                                        textView.setText("__________________RESPONSE"+response);
+//                                try {
+//                                    JSONArray data = jsonObject.getJSONArray("data");
+//
+//                                    for(int i=0; i<data.length(); i++) {
+//                                        JSONObject objectData = data.getJSONObject(i);
+//                                        namelist.add(objectData.getString("name"));
 //                                    }
+//
+//                                } catch (JSONException e) {
+//                                    e.printStackTrace();
+//                                }
+//
+//                                for (int i = 0; i < namelist.size();i++) {
+//                                    Log.d("Main", namelist.get(i));
+//                                }
+//                                Log.d("Main", "THIS HAS BEEN RUN");
+//                            }
+//            /* handle the result */
+//                        }
+//
+//                ).executeAsync();
+//                MediaNames mediaNames = new MediaNames();
+                try {
+                    namelist = MediaNames.getMovieNames("books");
+                } catch (Exception e) {
+                    Log.e("Main", "onSuccess: ", e);
+                }
+
+//
+                Log.d("Main", namelist.size()+"");
+                for (int i = 0; i < namelist.size() ;i++) {
+                    Log.d("Main", namelist.get(i));
+                }
 
 
-                            }
-            /* handle the result */
-                        }
 
-                ).executeAsync();
             }
 
             @Override
@@ -113,4 +117,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         callbackManager.onActivityResult(requestCode,resultCode,data);
     }
+
+
 }
