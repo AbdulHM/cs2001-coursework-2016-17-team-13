@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     LoginButton loginButton;
     TextView textView;
     CallbackManager callbackManager;
-    private ArrayList<String> namelist;
+    ArrayList<String> movielist= new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,50 +51,17 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(LoginResult loginResult) {
                 startActivity(new Intent(MainActivity.this, MainMenu.class));
 
-//                new GraphRequest(
-//                        AccessToken.getCurrentAccessToken(),
-////                        "/" + loginResult.getAccessToken().getUserId() + "/movies",
-//                        "/" + AccessToken.getCurrentAccessToken().getUserId() + "/movies",
-//                        null,
-//                        HttpMethod.GET,
-//                        new GraphRequest.Callback() {
-//                            public void onCompleted(GraphResponse response) {
-//                                final JSONObject jsonObject = response.getJSONObject();
-//                                namelist = new ArrayList<String>();
+//                try {
+//                    movielist = MediaNames.getNameList("books");
+//                } catch (Exception e) {
 //
-//                                try {
-//                                    JSONArray data = jsonObject.getJSONArray("data");
-//
-//                                    for(int i=0; i<data.length(); i++) {
-//                                        JSONObject objectData = data.getJSONObject(i);
-//                                        namelist.add(objectData.getString("name"));
-//                                    }
-//
-//                                } catch (JSONException e) {
-//                                    e.printStackTrace();
-//                                }
-//
-//                                for (int i = 0; i < namelist.size();i++) {
-//                                    Log.d("Main", namelist.get(i));
-//                                }
-//                                Log.d("Main", "THIS HAS BEEN RUN");
-//                            }
-//            /* handle the result */
-//                        }
-//
-//                ).executeAsync();
-//                MediaNames mediaNames = new MediaNames();
-                try {
-                    namelist = MediaNames.getMovieNames("books");
-                } catch (Exception e) {
-                    Log.e("Main", "onSuccess: ", e);
-                }
+//                }
 
 //
-                Log.d("Main", namelist.size()+"");
-                for (int i = 0; i < namelist.size() ;i++) {
-                    Log.d("Main", namelist.get(i));
-                }
+//                Log.d("Main", namelist.size()+"");
+//                for (int i = 0; i < namelist.size() ;i++) {
+//                    Log.d("Main", namelist.get(i));
+//                }
 
 
 

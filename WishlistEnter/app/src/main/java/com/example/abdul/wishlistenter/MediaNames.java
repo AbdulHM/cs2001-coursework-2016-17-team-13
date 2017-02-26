@@ -1,5 +1,7 @@
 package com.example.abdul.wishlistenter;
 
+import android.os.Bundle;
+import android.support.v4.app.BundleCompat;
 import android.util.Log;
 
 import com.facebook.AccessToken;
@@ -12,62 +14,48 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-
-/**
- * Created by Abdul on 10/02/2017.
- */
+import java.util.concurrent.ExecutionException;
 
 public class MediaNames {
 
-
-
-    public ArrayList<String> getmovieNames(){
+    public static ArrayList<String> getNameList(String apiEndPoint) throws InterruptedException, ExecutionException {
         final ArrayList<String> namelist = new ArrayList<String>();
-        new GraphRequest(
+        GraphRequest.Callback gCallback = new GraphRequest.Callback() {
+            @Override
+            public void onCompleted(GraphResponse response) {
+                final JSONObject jsonObject = response.getJSONObject();
+                try {
+                    JSONArray data = jsonObject.getJSONArray("data");
+                    for(int i=0; i<data.length(); i++) {
+                        JSONObject objectData = data.getJSONObject(i);
+                        namelist.add(objectData.getString("name"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        final GraphRequest graphRequest = new GraphRequest(
                 AccessToken.getCurrentAccessToken(),
-                "/" + AccessToken.getCurrentAccessToken().getUserId() + "/movies",
+                "/" + AccessToken.getCurrentAccessToken().getUserId() + "/" + apiEndPoint,
                 null,
                 HttpMethod.GET,
-                new GraphRequest.Callback() {
-                    public void onCompleted(GraphResponse response) {
-                        final JSONObject jsonObject = response.getJSONObject();
-//                        namelist = new ArrayList<String>();
+                gCallback
+        );
 
-                        try {
-                            JSONArray data = jsonObject.getJSONArray("data");
-
-
-                            for(int i=0; i<data.length(); i++) {
-                                JSONObject objectData = data.getJSONObject(i);
-                                namelist.add(objectData.getString("name"));
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        for (int i = 0; i < namelist.size();i++) {
-
-//                            Log.d("Main", namelist.get(i));
-
-                        }
-//                        Log.d("Main",  "ty ");
-
-
-                    }
-                /* handle the result */
-                }
-
-        ).executeAsync();
-
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Bundle bundle = new Bundle();
+                bundle.putString("limit", "100");
+                graphRequest.setParameters(bundle);
+                GraphResponse gResponse = graphRequest.executeAndWait();
+            }
+        });
+        t.start();
+        t.join();
         return namelist;
-
-
     }
-//
-//        public  ArrayList<String> getArrayList(){
-//
-//        return namelist;
-//    }
-
 
 }
