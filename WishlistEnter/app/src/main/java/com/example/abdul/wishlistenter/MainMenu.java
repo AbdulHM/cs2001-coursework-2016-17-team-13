@@ -21,5 +21,36 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(openMovies);
             }
         });
+
+        Button advanceToBooks= (Button) findViewById(R.id.books_button);
+        advanceToBooks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent openBooks= new Intent(MainMenu.this, BooksList.class);
+                startActivity(openBooks);
+            }
+        });
+
+        Button advanceToMusic= (Button) findViewById(R.id.music_button);
+        advanceToMusic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent openMusic= new Intent(MainMenu.this, MusicList.class);
+                startActivity(openMusic);
+            }
+        });
+        Button advanceToTelevision= (Button) findViewById(R.id.tv_button);
+        advanceToTelevision.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent openTelevision= new Intent(MainMenu.this, TelevisionList.class);
+                startActivity(openTelevision);
+            }
+        });
+
+
+
+
+
     }
 }

@@ -22,24 +22,24 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-public class MoviesList extends AppCompatActivity {
+public class BooksList extends AppCompatActivity {
 
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager layoutManager;
-    ArrayList<String> movieList = new ArrayList<>();
+    ArrayList<String> booksList = new ArrayList<>();
     MediaNames mediaNames= new MediaNames();
-    int Img_res= R.drawable.movies_icon;
+    int Img_res= R.drawable.books_icon;
     ArrayList<DataProvider> arrayList= new ArrayList<DataProvider>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movies_list);
+        setContentView(R.layout.activity_books_list);
         recyclerView= (RecyclerView) findViewById(R.id.recycler_view);
         try {
-            movieList=  mediaNames.getNameList("movies");
+            booksList=  mediaNames.getNameList("books");
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -47,9 +47,9 @@ public class MoviesList extends AppCompatActivity {
         }
         int i=0;
 
-        for (String name : movieList){
+        for (String name : booksList){
 
-            DataProvider dataProvider= new DataProvider(Img_res, movieList.get(i));
+            DataProvider dataProvider= new DataProvider(Img_res, booksList.get(i));
             arrayList.add(dataProvider);
             i++;
 

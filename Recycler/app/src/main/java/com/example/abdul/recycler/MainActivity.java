@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
-        adapter= new RecyclerAdapter(arrayList);
+        adapter= new RecyclerAdapter(arrayList, this);
         recyclerView.setHasFixedSize(true);
         layoutManager= new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);

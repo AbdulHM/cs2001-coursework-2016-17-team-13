@@ -23,7 +23,10 @@
             android:value="@string/facebook_app_id" />
 
         <activity android:name=".MainMenu" />
-        <activity android:name=".MoviesList"></activity>
+        <activity android:name=".MoviesList" />
+        <activity android:name=".BooksList" />
+        <activity android:name=".MusicList" />
+        <activity android:name=".TelevisionList"></activity>
     </application>
 
 </manifest>
