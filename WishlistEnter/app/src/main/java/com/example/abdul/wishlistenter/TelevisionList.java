@@ -55,7 +55,7 @@ public class TelevisionList extends AppCompatActivity {
 
 
         }
-        adapter= new RecyclerAdapter(arrayList);
+        adapter= new RecyclerAdapter3(arrayList, this);
         recyclerView.setHasFixedSize(true);
         layoutManager= new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);

@@ -16,11 +16,11 @@ import java.util.concurrent.ExecutionException;
  * Created by Abdul on 26/02/2017.
  */
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder> {
+public class RecyclerAdapter2 extends RecyclerView.Adapter<RecyclerAdapter2.RecyclerViewHolder> {
     private ArrayList<DataProvider> dataProviders = new ArrayList<DataProvider>();
     Context ctx;
 
-    public RecyclerAdapter (ArrayList<DataProvider> arrayList1, Context ctx){
+    public RecyclerAdapter2 (ArrayList<DataProvider> arrayList1, Context ctx){
 
         this.dataProviders= arrayList1;
         this.ctx=ctx;
@@ -53,7 +53,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         ArrayList<DataProvider> dataProviders = new ArrayList<DataProvider>();
         Context ctx;
         MediaNames mediaNames= new MediaNames();
-        ArrayList<String> musicList = new ArrayList<>();
+        ArrayList<String> movieList = new ArrayList<>();
         int Img_res= R.drawable.music_icon;
 
 
@@ -66,7 +66,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
             imageView= (ImageView) view.findViewById(R.id.media_icon);
             mediaName= (TextView) view.findViewById(R.id.media_name);
             try {
-                musicList=  mediaNames.getNameList("music");
+                movieList=  mediaNames.getNameList("movies");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
@@ -78,7 +78,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         public void onClick(View v) {
             int position= getAdapterPosition();
 //            DataProvider dataProvider= this.dataProviders.get(musiclist.get(position));
-            DataProvider dataProvider= new DataProvider(Img_res, musicList.get(position));
+            DataProvider dataProvider= new DataProvider(Img_res, movieList.get(position));
             Intent intent= new Intent(this.ctx, LanderPage.class);
             intent.putExtra("name_id",dataProvider.getMediaName());
             this.ctx.startActivity(intent);

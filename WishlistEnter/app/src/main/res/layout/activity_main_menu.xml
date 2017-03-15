@@ -10,22 +10,25 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     tools:context="com.example.abdul.wishlistenter.MainMenu">
-    <!--<ImageView-->
-        <!--android:id="@+id/imageView1"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:src="@drawable/logowhite"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_alignParentEnd="true"-->
-        <!--android:layout_weight="5"-->
-        <!--/>-->
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logowhite"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_weight="5"
+        />
 
     <Button
         android:text="Music"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/music_button"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:background="#8b9dc3"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="5dp"/>
 
     <Button
         android:text="TV"
@@ -33,6 +36,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/tv_button"
         android:layout_weight="1"
+        android:background="#3b5998"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="5dp"
+
         />
 
     <Button
@@ -40,14 +47,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/movies_button"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:background="#8b9dc3"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="5dp"/>
 
     <Button
         android:text="Books"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/books_button"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:background="#3b5998"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="5dp"/>
 
 
 </LinearLayout>

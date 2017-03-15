@@ -72,7 +72,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
             int position =getAdapterPosition();
             DataProvider dataProvider= this.arrayList.get(position);
             Intent intent= new Intent(this.ctx, MovieDetails.class);
-            intent.putExtra("img_id",dataProvider.getImg_res());
+//            intent.putExtra("img_id",dataProvider.getImg_res());
             intent.putExtra("FullName", dataProvider.getMediaName());
             this.ctx.startActivity(intent);
 

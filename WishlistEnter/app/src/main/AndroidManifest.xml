@@ -26,7 +26,8 @@
         <activity android:name=".MoviesList" />
         <activity android:name=".BooksList" />
         <activity android:name=".MusicList" />
-        <activity android:name=".TelevisionList"></activity>
+        <activity android:name=".TelevisionList" />
+        <activity android:name=".LanderPage"></activity>
     </application>
 
 </manifest>
